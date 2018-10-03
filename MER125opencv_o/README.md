@@ -1,6 +1,6 @@
 # MER125opencv_o
 I have Encapsulated into a class.You can only use the MER_Series.h MER_Series.cpp sample.cpp
-MER-125-30GM/C-P
+# MER-125-30GM/C-P
    ![Image text](https://raw.githubusercontent.com/NikofoxS/MER125opencv_o/master/DaHeng_OpenCamera/the%20camera.JPG)
    
    http://www.daheng-image.com/
