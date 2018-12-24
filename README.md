@@ -6,5 +6,5 @@ Now I have:
      MER-125-30GM/C-P(http://www.daheng-image.com/)  
     ![MER-125-30GM](https://raw.githubusercontent.com/NikofoxS/kinds_of_cameras/master/MER125opencv_o/DaHeng_OpenCamera/the%20camera.JPG)  
     Basler(https://www.baslerweb.com/en/)  
-    ![Image text]()  
+    ![Image text](https://raw.githubusercontent.com/NikofoxS/kinds_of_cameras/master/OpenBasler/OpenBasler/basler.PNG)  
    
