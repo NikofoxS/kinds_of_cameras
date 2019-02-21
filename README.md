@@ -7,4 +7,5 @@ Now I have:
     ![MER-125-30GM](https://raw.githubusercontent.com/NikofoxS/kinds_of_cameras/master/MER125opencv_o/DaHeng_OpenCamera/the%20camera.JPG)  
     Basler(https://www.baslerweb.com/en/)  
     ![Image text](https://raw.githubusercontent.com/NikofoxS/kinds_of_cameras/master/OpenBasler/OpenBasler/basler.PNG)  
-   
+    HIKVISION(https://www.hikvision.com/cn/)  
+    ![Image text](https://raw.githubusercontent.com/NikofoxS/kinds_of_cameras/master/OpenHIKVISION/OpenHIKVISION/MV-CH120-10GM.png)  
