@@ -136,26 +136,41 @@ bool OpenHIKVISION::Convert2Mat(cv::Mat &OutputImage, MV_FRAME_OUT_INFO_EX* pstI
 	if (pstImageInfo->enPixelType == PixelType_Gvsp_Mono8)
 	{
 		srcImage = cv::Mat(pstImageInfo->nHeight, pstImageInfo->nWidth, CV_8UC1, pData);
+		OutputImage = srcImage.clone();
 	}
 	else if (pstImageInfo->enPixelType == PixelType_Gvsp_RGB8_Packed)
 	{
 		RGB2BGR(pData, pstImageInfo->nWidth, pstImageInfo->nHeight);
 		srcImage = cv::Mat(pstImageInfo->nHeight, pstImageInfo->nWidth, CV_8UC3, pData);
+		OutputImage = srcImage.clone();
 	}
 	else
 	{
-		//"unsupported pixel format\n"
-		return false;
-	}
+		MV_CC_PIXEL_CONVERT_PARAM stParam;
+		memset(&stParam, 0, sizeof(MV_CC_PIXEL_CONVERT_PARAM));
+		stParam.pSrcData = pData;
+		stParam.nSrcDataLen = pstImageInfo->nFrameLen;
+		stParam.enSrcPixelType = pstImageInfo->enPixelType;
+		stParam.nWidth = pstImageInfo->nWidth;
+		stParam.nHeight = pstImageInfo->nHeight;
+														
+		stParam.enDstPixelType = PixelType_Gvsp_BGR8_Packed;
+																 
+		stParam.nDstBufferSize = pstImageInfo->nWidth*pstImageInfo->nHeight * 3;
+		unsigned char* pImage = (unsigned char*)malloc(stParam.nDstBufferSize);
+		stParam.pDstBuffer = pImage;
 
-	if (NULL == srcImage.data)
+		if (MV_CC_ConvertPixelType(handle, &stParam) != MV_OK)return false;
+		srcImage = cv::Mat(pstImageInfo->nHeight, pstImageInfo->nWidth, CV_8UC3, pImage);
+
+		OutputImage = srcImage.clone();
+		free(pImage);
+	}
+	if (srcImage.data == NULL)
 	{
 		return false;
 	}
-
-	OutputImage = srcImage.clone();
 	srcImage.release();
-
 	return true;
 }
 
