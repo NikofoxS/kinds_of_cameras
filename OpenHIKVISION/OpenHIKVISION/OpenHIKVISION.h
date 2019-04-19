@@ -16,6 +16,7 @@ public:
 	bool OpenHIK(unsigned int DeviceNum, std::string result = "success");//Open Camera
 	void CloseHIK();//Close Camera
 	bool GetFrame(cv::Mat &image);// get one frame from camera with timeout=1000ms
+	bool IsConnected();//IsDeviceConnected
 	////-------------Open the camera before------------
 	bool SetExposureAuto(unsigned int mode);//SetExposureAuto 0£ºOff ;1£ºOnce 2£ºContinuous
 	bool SetExposureTime(float time);//¡Ý0.0£¬us

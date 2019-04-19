@@ -240,3 +240,9 @@ bool OpenHIKVISION::SetCamFloatExEnum(const char* strKey, const char* ExstrKey, 
 	if (MV_OK != nRet)return false;
 	else return true;
 }
+
+
+bool OpenHIKVISION::IsConnected()
+{
+	return MV_CC_IsDeviceConnected(handle);
+}
