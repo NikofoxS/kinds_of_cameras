@@ -18,10 +18,10 @@ public:
 	bool GetFrame(cv::Mat &image);// get one frame from camera with timeout=1000ms
 	bool IsConnected();//IsDeviceConnected
 	////-------------Open the camera before------------
-	bool SetExposureAuto(unsigned int mode);//SetExposureAuto 0£ºOff ;1£ºOnce 2£ºContinuous
-	bool SetExposureTime(float time);//¡İ0.0£¬us
-	bool SetGainAuto(unsigned int mode);//SetGainAuto 0£ºOff ;1£ºOnce 2£ºContinuous
-	bool SetGain(float db); //¡İ0.0£¬dB
+	bool SetExposureAuto(unsigned int mode);//SetExposureAuto 0Â£ÂºOff ;1Â£ÂºOnce 2Â£ÂºContinuous
+	bool SetExposureTime(float time);//Â¡Ã0.0Â£Â¬us
+	bool SetGainAuto(unsigned int mode);//SetGainAuto 0Â£ÂºOff ;1Â£ÂºOnce 2Â£ÂºContinuous
+	bool SetGain(float db); //Â¡Ã0.0Â£Â¬dB
 	//-------------------------------------------------
 private:
 	void* handle;//Device handle
@@ -32,7 +32,7 @@ private:
 	bool Convert2Mat(cv::Mat &OutputImage, MV_FRAME_OUT_INFO_EX* pstImageInfo, unsigned char * pData);// convert data stream in Mat format
 	int RGB2BGR(unsigned char* pRgbData, unsigned int nWidth, unsigned int nHeight); //convert RGB in BGR format
 	bool SetCamEnumValue(const char* strKey,unsigned int nValue);
-	bool SetCamFloatExEnum(const char* strKey, const char* ExstrKey, unsigned int nValue);
+	bool SetCamFloatExEnum(const char* strKey, const char* ExstrKey, float nValue);
 };
 
 #endif
