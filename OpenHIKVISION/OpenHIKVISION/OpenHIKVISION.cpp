@@ -226,7 +226,7 @@ bool OpenHIKVISION::SetCamEnumValue(const char* strKey, unsigned int nValue)
 	return true;
 }
 
-bool OpenHIKVISION::SetCamFloatExEnum(const char* strKey, const char* ExstrKey, unsigned int nValue)
+bool OpenHIKVISION::SetCamFloatExEnum(const char* strKey, const char* ExstrKey, float nValue)
 {
 	if (!openflg || nValue < 0.0f)return false;
 	int nRet;
