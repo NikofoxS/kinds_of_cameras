@@ -53,33 +53,34 @@ bool OpenHIKVISION::OpenHIK(unsigned int DeviceNum, std::string result)
 			{
 				sprintf_s(temp_result, sizeof(temp_result), "Warning: Get Packet Size fail nRet [0x%x]!", nPacketSize);
 			}
-			// Set trigger mode as off
-			nRet = MV_CC_SetEnumValue(handle, "TriggerMode", 0);
-			if (MV_OK != nRet)
-			{
-				sprintf_s(temp_result, sizeof(temp_result), "Set Trigger Mode fail! nRet [0x%x]\n", nRet);
-				break;
-			}
-			// Get payload size
-			MVCC_INTVALUE stParam;
-			memset(&stParam, 0, sizeof(MVCC_INTVALUE));
-			nRet = MV_CC_GetIntValue(handle, "PayloadSize", &stParam);
-			if (MV_OK != nRet)
-			{
-				sprintf_s(temp_result, sizeof(temp_result), "Get PayloadSize fail! nRet [0x%x]\n", nRet);
-				break;
-			}
-			g_nPayloadSize = stParam.nCurValue;
-			// Start grab image
-			nRet = MV_CC_StartGrabbing(handle);
-			if (MV_OK != nRet)
-			{
-				sprintf_s(temp_result, sizeof(temp_result), "Start Grabbing fail! nRet [0x%x]\n", nRet);
-				break;
-			}
-			memset(&stImageInfo, 0, sizeof(MV_FRAME_OUT_INFO_EX));
-			openflg = true;
 		}
+		// Set trigger mode as off
+		nRet = MV_CC_SetEnumValue(handle, "TriggerMode", 0);
+		if (MV_OK != nRet)
+		{
+			sprintf_s(temp_result, sizeof(temp_result), "Set Trigger Mode fail! nRet [0x%x]\n", nRet);
+			break;
+		}
+		// Get payload size
+		MVCC_INTVALUE stParam;
+		memset(&stParam, 0, sizeof(MVCC_INTVALUE));
+		nRet = MV_CC_GetIntValue(handle, "PayloadSize", &stParam);
+		if (MV_OK != nRet)
+		{
+			sprintf_s(temp_result, sizeof(temp_result), "Get PayloadSize fail! nRet [0x%x]\n", nRet);
+			break;
+		}
+		g_nPayloadSize = stParam.nCurValue;
+		// Start grab image
+		nRet = MV_CC_StartGrabbing(handle);
+		if (MV_OK != nRet)
+		{
+			sprintf_s(temp_result, sizeof(temp_result), "Start Grabbing fail! nRet [0x%x]\n", nRet);
+			break;
+		}
+		memset(&stImageInfo, 0, sizeof(MV_FRAME_OUT_INFO_EX));
+		openflg = true;
+
 	} while (0);
 	if (nRet != MV_OK)
 	{
